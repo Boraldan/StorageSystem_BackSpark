@@ -1,0 +1,22 @@
+INSERT INTO t_sock (model, color, cotton_percentage, quantity, is_active)
+VALUES
+    ('Sporty', 'red', 80, 100, TRUE),
+    ('Casual', 'blue', 50, 200, TRUE),
+    ('Formal', 'black', 90, 150, TRUE),
+    ('Striped', 'green', 40, 120, TRUE),
+    ('Sporty', 'white', 75, 300, TRUE),
+    ('Casual', 'gray', 60, 250, TRUE),
+    ('Formal', 'brown', 85, 130, TRUE),
+    ('Striped', 'yellow', 20, 90, TRUE),
+    ('Sporty', 'pink', 70, 80, TRUE),
+    ('Casual', 'purple', 55, 140, TRUE),
+    ('Formal', 'navy', 95, 170, TRUE),
+    ('Striped', 'teal', 35, 60, TRUE),
+    ('Sporty', 'orange', 65, 110, TRUE),
+    ('Casual', 'red', 50, 220, TRUE),
+    ('Formal', 'blue', 88, 140, TRUE),
+    ('Striped', 'black', 25, 70, TRUE),
+    ('Sporty', 'green', 77, 95, TRUE),
+    ('Casual', 'white', 60, 200, TRUE),
+    ('Formal', 'gray', 92, 150, TRUE),
+    ('Striped', 'yellow', 30, 100, TRUE);

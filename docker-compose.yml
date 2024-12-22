@@ -1,0 +1,47 @@
+services:
+
+  postgres_backspark:
+    image: postgres:latest
+    container_name: postgres_backspark
+    environment:
+      POSTGRES_DB: postgres_backspark
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "15433:5432"
+    volumes:
+      - postgres_data_backspark:/var/lib/postgresql/postgres_backspark
+      - type: bind
+        source: ./_data/sql
+        target: /docker-entrypoint-initdb.d
+    networks:
+      - microservices
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  storage:
+    build:
+      dockerfile: ./Dockerfile
+    container_name: storage
+    depends_on:
+      postgres_backspark:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_backspark:5432/postgres_backspark
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123
+      SPRING_PROFILES_ACTIVE: secret
+    networks:
+      - microservices
+    ports:
+      - "8080:8080"
+
+
+networks:
+  microservices:
+
+volumes:
+  postgres_data_backspark:
